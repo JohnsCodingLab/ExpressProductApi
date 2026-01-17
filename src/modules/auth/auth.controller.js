@@ -5,6 +5,7 @@ import { AuthService } from "./auth.service.js";
 
 // ----------------- Register -----------------
 export const register = asyncHandler(async (req, res) => {
+  console.log("Incoming body:", req.body);
   const result = await AuthService.register(req.body);
   res.status(201).json(result);
 });

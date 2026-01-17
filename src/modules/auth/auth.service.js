@@ -1,7 +1,7 @@
 import User from "../../models/User.js";
 import { AppError } from "../../shared/utils/AppError.js";
 import { logger } from "../../shared/utils/logger.js";
-import { hashPassword } from "../../shared/utils/password.js";
+import { comparePassword, hashPassword } from "../../shared/utils/password.js";
 import { TokenService } from "./token.service.js";
 
 export class AuthService {
@@ -36,7 +36,7 @@ export class AuthService {
 
   // Login
   static async login(data, meta = {}) {
-    const user = await User.findOne({ email: data.email });
+    const user = await User.findOne({ email: data.email }).select("+password");
 
     if (!user || !(await comparePassword(data.password, user.password))) {
       logger.warn(`Login failed for email ${data.email}`);

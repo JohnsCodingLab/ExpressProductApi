@@ -14,7 +14,7 @@ const router = Router();
 router.post(
   "/register",
   authRateLimiter,
-  validate(registerSchema),
+  // validate(registerSchema),
   AuthController.register,
 );
 

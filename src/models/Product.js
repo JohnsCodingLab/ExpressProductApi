@@ -38,11 +38,7 @@ const productSchema = new mongoose.Schema(
       default: 0,
     },
 
-    images: [
-      {
-        type: String, // Cloudinary / S3 URLs
-      },
-    ],
+    images: [{ type: String }],
 
     isActive: {
       type: Boolean,

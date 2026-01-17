@@ -11,7 +11,7 @@ export const registerSchema = z.object({
       .string()
       .trim()
       .min(2, "Last name must be at least 2 characters"),
-    email: z.string().email("Invalid email address").trim(),
+    email: z.email("Invalid email address").trim(),
     password: z.string().min(8, "Password must be at least 8 characters"),
   }),
 });
@@ -19,7 +19,7 @@ export const registerSchema = z.object({
 // ----------------- Login Schema -----------------
 export const loginSchema = z.object({
   body: z.object({
-    email: z.string().email("Invalid email address").trim(),
+    email: z.email("Invalid email address").trim(),
     password: z.string().min(8, "Password must be at least 8 characters"),
   }),
 });

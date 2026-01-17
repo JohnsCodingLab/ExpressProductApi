@@ -34,7 +34,7 @@ export class TokenService {
       parseInt(env.JWT_REFRESH_EXPIRATION, 10) || 7 * 24 * 60 * 60 * 1000; // fallback 7 days
     const expiresAt = new Date(Date.now() + expireInMs);
 
-    const refreshToken = new RefreshToken({
+    const refreshToken = await RefreshToken.create({
       jti,
       hashedToken: tokenHash,
       expiresAt,

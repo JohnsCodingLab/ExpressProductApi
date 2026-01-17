@@ -6,6 +6,7 @@ import { errorHandler } from "./shared/middleware/errorHandler.js";
 import { env } from "./config/env.js";
 import morgan from "morgan";
 import authRouter from "./modules/auth/auth.route.js";
+import productRouter from "./modules/products/product.route.js";
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/product", productRouter);
 
 // 404 handler
 app.all("{/*path}", (req, res, next) => {
